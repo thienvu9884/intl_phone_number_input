@@ -17,6 +17,7 @@ class SelectorButton extends StatelessWidget {
   final String? locale;
   final bool isEnabled;
   final bool isScrollControlled;
+  final Color? iconEnabledColor;
 
   final ValueChanged<Country?> onCountryChanged;
 
@@ -32,6 +33,7 @@ class SelectorButton extends StatelessWidget {
     required this.onCountryChanged,
     required this.isEnabled,
     required this.isScrollControlled,
+    this.iconEnabledColor,
   }) : super(key: key);
 
   @override
@@ -40,6 +42,7 @@ class SelectorButton extends StatelessWidget {
         ? countries.isNotEmpty && countries.length > 1
             ? DropdownButtonHideUnderline(
                 child: DropdownButton<Country>(
+                  iconEnabledColor: iconEnabledColor,
                   key: Key(TestHelper.DropdownButtonKeyValue),
                   hint: Item(
                     country: country,

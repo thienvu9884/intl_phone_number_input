@@ -77,6 +77,8 @@ class InternationalPhoneNumberInput extends StatefulWidget {
   final InputDecoration? inputDecoration;
   final InputDecoration? searchBoxDecoration;
   final Color? cursorColor;
+  final Color? selectorColor;
+  final Color? iconEnabledColor;
   final TextAlign textAlign;
   final TextAlignVertical textAlignVertical;
   final EdgeInsets scrollPadding;
@@ -123,6 +125,8 @@ class InternationalPhoneNumberInput extends StatefulWidget {
       this.scrollPadding = const EdgeInsets.all(20.0),
       this.focusNode,
       this.cursorColor,
+      this.selectorColor,
+      this.iconEnabledColor,
       this.autofillHints,
       this.countries})
       : super(key: key);
@@ -396,25 +400,33 @@ class _InputWidgetView
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                SelectorButton(
-                  country: state.country,
-                  countries: state.countries,
-                  onCountryChanged: state.onCountryChanged,
-                  selectorConfig: widget.selectorConfig,
-                  selectorTextStyle: widget.selectorTextStyle,
-                  searchBoxDecoration: widget.searchBoxDecoration,
-                  locale: state.locale,
-                  isEnabled: widget.isEnabled,
-                  autoFocusSearchField: widget.autoFocusSearch,
-                  isScrollControlled: widget.countrySelectorScrollControlled,
-                ),
-                SizedBox(
-                  height: state.selectorButtonBottomPadding,
-                ),
-              ],
+            Container(
+              decoration: BoxDecoration(
+                color: widget.selectorColor,
+                border: Border.all(width: 1, color: Color(0xffD1DFFF)),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SelectorButton(
+                    iconEnabledColor: widget.iconEnabledColor,
+                    country: state.country,
+                    countries: state.countries,
+                    onCountryChanged: state.onCountryChanged,
+                    selectorConfig: widget.selectorConfig,
+                    selectorTextStyle: widget.selectorTextStyle,
+                    searchBoxDecoration: widget.searchBoxDecoration,
+                    locale: state.locale,
+                    isEnabled: widget.isEnabled,
+                    autoFocusSearchField: widget.autoFocusSearch,
+                    isScrollControlled: widget.countrySelectorScrollControlled,
+                  ),
+                  SizedBox(
+                    height: state.selectorButtonBottomPadding,
+                  ),
+                ],
+              ),
             ),
             SizedBox(width: widget.spaceBetweenSelectorAndTextField),
           ],
