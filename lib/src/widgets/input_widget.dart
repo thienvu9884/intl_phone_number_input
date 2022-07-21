@@ -405,8 +405,9 @@ class _InputWidgetView
             Container(
               decoration: BoxDecoration(
                 color: widget.selectorColor,
-                border:
-                    Border.all(width: 1, color: widget.selectorBorderColor!),
+                border: Border.all(
+                    width: 1,
+                    color: widget.selectorBorderColor ?? Color(0xff000000)),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Column(
