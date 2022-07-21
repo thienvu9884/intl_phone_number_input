@@ -326,7 +326,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
   String? validator(String? value) {
     bool isValid =
         this.isNotValid && (value!.isNotEmpty || widget.ignoreBlank == false);
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       if (isValid && widget.errorMessage != null) {
         setState(() {
           this.selectorButtonBottomPadding =
@@ -407,7 +407,7 @@ class _InputWidgetView
                 color: widget.selectorColor,
                 border: Border.all(
                     width: 1,
-                    color: widget.selectorBorderColor ?? Color(0xff000000)),
+                    color: widget.selectorBorderColor ?? Color(0xffD1DFFF)),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Column(
