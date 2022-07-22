@@ -60,6 +60,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
   /// Ignored if [setSelectorButtonAsPrefixIcon = true]
   final double spaceBetweenSelectorAndTextField;
   final int maxLength;
+  final int? maxLines;
 
   final bool isEnabled;
   final bool formatInput;
@@ -130,6 +131,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
       this.selectorColor,
       this.iconEnabledColor,
       this.autofillHints,
+      this.maxLines,
       this.countries})
       : super(key: key);
 
@@ -443,6 +445,7 @@ class _InputWidgetView
               focusNode: widget.focusNode,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
+              maxLines: widget.maxLines,
               keyboardType: widget.keyboardType,
               textInputAction: widget.keyboardAction,
               style: widget.textStyle,
