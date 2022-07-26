@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_number_input/src/custom_drop_down/common_drop_down_item.dart';
+import 'package:intl_phone_number_input/src/custom_drop_down/common_dropdown_button.dart';
 import 'package:intl_phone_number_input/src/models/country_model.dart';
 import 'package:intl_phone_number_input/src/utils/selector_config.dart';
 import 'package:intl_phone_number_input/src/utils/test/test_helper.dart';
@@ -40,23 +42,7 @@ class SelectorButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return selectorConfig.selectorType == PhoneInputSelectorType.DROPDOWN
         ? countries.isNotEmpty && countries.length > 1
-            ? DropdownButtonHideUnderline(
-                child: DropdownButton<Country>(
-                  iconEnabledColor: iconEnabledColor,
-                  key: Key(TestHelper.DropdownButtonKeyValue),
-                  hint: Item(
-                    country: country,
-                    showFlag: selectorConfig.showFlags,
-                    useEmoji: selectorConfig.useEmoji,
-                    leadingPadding: selectorConfig.leadingPadding,
-                    trailingSpace: selectorConfig.trailingSpace,
-                    textStyle: selectorTextStyle,
-                  ),
-                  value: country,
-                  items: mapCountryToDropdownItem(countries),
-                  onChanged: isEnabled ? onCountryChanged : null,
-                ),
-              )
+            ? _buildDropDown(context)
             : Item(
                 country: country,
                 showFlag: selectorConfig.showFlags,
@@ -98,6 +84,82 @@ class SelectorButton extends StatelessWidget {
               ),
             ),
           );
+  }
+
+  Widget _buildDropDown(BuildContext context) {
+    return NameAppDropDown<Country>(
+      hideIcon: false,
+      colorIcon: Colors.grey,
+      backgroundColor: Colors.white,
+      colorBorderSide: Color(0xffD1DFFF),
+      leadingIcon: false,
+      enable: true,
+      icon: const Icon(
+        Icons.arrow_drop_down,
+        color: Color(0xff556998),
+      ),
+      dropdownStyle: SSDropdownStyle(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        elevation: 5,
+      ),
+      dropdownButtonStyle: SSDropdownButtonStyle(
+        elevation: 2,
+        backgroundColor: Colors.white,
+        height: 50,
+        width: MediaQuery.of(context).size.width * 0.32,
+      ),
+      items: List.generate(
+          countries.length,
+          (index) => SSDropdownItem<Country>(
+                value: country,
+                child: CustomDropdownItem(
+                    key: Key(TestHelper.DropdownButtonKeyValue),
+                    index: index,
+                    colorHover: Colors.blue,
+                    colorText: const Color(0xff556998),
+                    showImage: true,
+                    image: countries[index].flagUri,
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    value: countries[index].dialCode.toString()),
+              )),
+      child: Expanded(
+        child: Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Row(
+              children: [
+                Image.asset(
+                  country!.flagUri,
+                  width: 28.0,
+                  height: 25.0,
+                  package: 'intl_phone_number_input',
+                  errorBuilder: (context, error, stackTrace) {
+                    return SizedBox.shrink();
+                  },
+                ),
+                SizedBox(width: 5),
+                Expanded(
+                    child: FittedBox(
+                  child: Container(
+                    height: 40,
+                    alignment: Alignment.center,
+                    child: Text(
+                      country!.dialCode.toString(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Color(0xff556998)),
+                    ),
+                  ),
+                )),
+              ],
+            )),
+      ),
+      onChange: (dynamic value, int index) =>
+          isEnabled ? onCountryChanged(countries[index]) : null,
+    );
   }
 
   /// Converts the list [countries] to `DropdownMenuItem`
@@ -162,7 +224,7 @@ class SelectorButton extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                bottom: MediaQuery.of(context).viewInsets.bottom),
             child: DraggableScrollableSheet(
               builder: (BuildContext context, ScrollController controller) {
                 return Directionality(
