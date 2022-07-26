@@ -90,10 +90,10 @@ class SelectorButton extends StatelessWidget {
     return NameAppDropDown<Country>(
       hideIcon: false,
       colorIcon: Colors.grey,
-      backgroundColor: Colors.white,
-      colorBorderSide: Color(0xffD1DFFF),
+      backgroundColor: isEnabled ? Color(0xffFFFFFF) : Color(0xffF2F6FF),
+      colorBorderSide: isEnabled ? Color(0xffD1DFFF) : Color(0xff9BAED9),
       leadingIcon: false,
-      enable: true,
+      enable: isEnabled,
       icon: const Icon(
         Icons.arrow_drop_down,
         color: Color(0xff556998),
