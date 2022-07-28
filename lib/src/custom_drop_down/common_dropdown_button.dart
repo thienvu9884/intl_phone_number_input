@@ -154,42 +154,38 @@ class NameAppDropDownState<T> extends State<NameAppDropDown<T>>
                     borderRadius:
                     widget.dropdownStyle.borderRadius ?? BorderRadius.zero,
                     color: widget.dropdownStyle.color,
-                    child: SizeTransition(
-                      axisAlignment: 1,
-                      sizeFactor: _expandAnimation!,
-                      child: ConstrainedBox(
-                        constraints: widget.dropdownStyle.constraints ??
-                            BoxConstraints(
-                              maxHeight: (MediaQuery.of(context).size.height) -
-                                  topOffset -
-                                  15,
-                            ),
-                        child: ListView(
-                          padding:
-                          widget.dropdownStyle.padding ?? EdgeInsets.zero,
-                          shrinkWrap: true,
-                          children: widget.items!.asMap().entries.map((item) {
-                            return InkWell(
-                              excludeFromSemantics: true,
-                              borderRadius:
-                              const BorderRadius.all(Radius.circular(8)),
-                              onHover: (hover) {
-                                if (item.value.onHover != null) {
-                                  item.value.onHover!(hover);
-                                }
-                              },
-                              onTap: widget.onClicked != null
-                                  ? widget.onClicked!(
-                                  item.value.value as T, item.key)
-                                  : () {
-                                widget.onChange!(
-                                    item.value.value as T, item.key);
-                                _toggleDropdown();
-                              },
-                              child: item.value,
-                            );
-                          }).toList(),
-                        ),
+                    child: ConstrainedBox(
+                      constraints: widget.dropdownStyle.constraints ??
+                          BoxConstraints(
+                            maxHeight: (MediaQuery.of(context).size.height) -
+                                topOffset -
+                                15,
+                          ),
+                      child: ListView(
+                        padding:
+                        widget.dropdownStyle.padding ?? EdgeInsets.zero,
+                        shrinkWrap: true,
+                        children: widget.items!.asMap().entries.map((item) {
+                          return InkWell(
+                            excludeFromSemantics: true,
+                            borderRadius:
+                            const BorderRadius.all(Radius.circular(8)),
+                            onHover: (hover) {
+                              if (item.value.onHover != null) {
+                                item.value.onHover!(hover);
+                              }
+                            },
+                            onTap: widget.onClicked != null
+                                ? widget.onClicked!(
+                                item.value.value as T, item.key)
+                                : () {
+                              widget.onChange!(
+                                  item.value.value as T, item.key);
+                              _toggleDropdown();
+                            },
+                            child: item.value,
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),
