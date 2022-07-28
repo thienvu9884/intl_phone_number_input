@@ -114,47 +114,28 @@ class SelectorButton extends StatelessWidget {
           (index) => SSDropdownItem<Country>(
                 value: country,
                 child: CustomDropdownItem(
-                    key: Key(TestHelper.DropdownButtonKeyValue),
-                    index: index,
-                    colorHover: Colors.blue,
-                    colorText: const Color(0xff556998),
-                    showImage: true,
-                    image: countries[index].flagUri,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    value: countries[index].dialCode.toString()),
+                  key: Key(TestHelper.DropdownButtonKeyValue),
+                  index: index,
+                  colorHover: Colors.blue,
+                  colorText: const Color(0xff556998),
+                  showImage: true,
+                  image: countries[index].flagUri,
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  value: countries[index].dialCode.toString(),
+                  country: countries[index].name.toString(),
+                ),
               )),
       child: Expanded(
         child: Padding(
             padding: const EdgeInsets.only(left: 12),
-            child: Row(
-              children: [
-                Image.asset(
-                  country!.flagUri,
-                  width: 28.0,
-                  height: 25.0,
-                  package: 'intl_phone_number_input',
-                  errorBuilder: (context, error, stackTrace) {
-                    return SizedBox.shrink();
-                  },
-                ),
-                SizedBox(width: 5),
-                Expanded(
-                    child: FittedBox(
-                  child: Container(
-                    height: 40,
-                    alignment: Alignment.center,
-                    child: Text(
-                      country!.dialCode.toString(),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                          color: Color(0xff556998)),
-                    ),
-                  ),
-                )),
-              ],
+            child: Text(
+              country!.dialCode.toString(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  color: Color(0xff556998)),
             )),
       ),
       onChange: (dynamic value, int index) =>

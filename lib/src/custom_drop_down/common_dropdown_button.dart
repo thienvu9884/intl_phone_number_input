@@ -81,7 +81,7 @@ class NameAppDropDownState<T> extends State<NameAppDropDown<T>>
             ),
             side: BorderSide(
               width: 1,
-              color: (_isOpen ? const Color(0xffD1DFFF) : widget.colorBorderSide) ??
+              color: (_isOpen ? Color(0xffD1DFFF) : widget.colorBorderSide) ??
                   Colors.white,
               style: BorderStyle.solid,
             ),
@@ -143,7 +143,7 @@ class NameAppDropDownState<T> extends State<NameAppDropDown<T>>
                 left: offset.dx,
                 top: topOffset,
                 height: MediaQuery.of(context).size.height * 0.4,
-                width: widget.dropdownStyle.width ?? size.width,
+                width: MediaQuery.of(context).size.width * 0.99,
                 child: CompositedTransformFollower(
                   offset:
                   widget.dropdownStyle.offset ?? Offset(0, size.height + 5),
@@ -182,8 +182,19 @@ class NameAppDropDownState<T> extends State<NameAppDropDown<T>>
                               widget.onChange!(
                                   item.value.value as T, item.key);
                               _toggleDropdown();
-                            },
-                            child: item.value,
+                                  },
+                            child: Column(
+                              children: [
+                                item.value,
+                                Divider(
+                                  color: Colors.grey,
+                                  thickness: 0.5,
+                                  height: 0.5,
+                                  indent: 8,
+                                  endIndent: 8,
+                                )
+                              ],
+                            ),
                           );
                         }).toList(),
                       ),
