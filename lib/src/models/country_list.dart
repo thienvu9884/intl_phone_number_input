@@ -44,37 +44,6 @@ class Countries {
 
   static List<Map<String, dynamic>> _countryList = [
     {
-      "num_code": "4",
-      "alpha_2_code": "AF",
-      "alpha_3_code": "AFG",
-      "en_short_name": "Afghanistan",
-      "nationality": "Afghan",
-      "dial_code": "+93",
-      "nameTranslations": {
-        "sk": "Afganistan",
-        "se": "Afghanistan",
-        "pl": "Afganistan",
-        "no": "Afghanistan",
-        "ja": "アフガニスタン",
-        "it": "Afghanistan",
-        "zh": "阿富汗",
-        "nl": "Afghanistan",
-        "de": "Afghanistan",
-        "fr": "Afghanistan",
-        "es": "Afganistán",
-        "en": "Afghanistan",
-        "pt_BR": "Afeganistão",
-        "sr-Cyrl": "Авганистан",
-        "sr-Latn": "Avganistan",
-        "zh_TW": "阿富汗",
-        "tr": "Afganistan",
-        "ro": "Afganistan",
-        "ar": "أفغانستان",
-        "fa": "افغانستان",
-        "yue": "阿富汗"
-      }
-    },
-    {
       "num_code": "248",
       "alpha_2_code": "AX",
       "alpha_3_code": "ALA",
@@ -103,6 +72,37 @@ class Countries {
         "ar": "جزر أولاند",
         "fa": "جزیره اولاند",
         "yue": "奧蘭群島"
+      }
+    },
+    {
+      "num_code": "4",
+      "alpha_2_code": "AF",
+      "alpha_3_code": "AFG",
+      "en_short_name": "Afghanistan",
+      "nationality": "Afghan",
+      "dial_code": "+93",
+      "nameTranslations": {
+        "sk": "Afganistan",
+        "se": "Afghanistan",
+        "pl": "Afganistan",
+        "no": "Afghanistan",
+        "ja": "アフガニスタン",
+        "it": "Afghanistan",
+        "zh": "阿富汗",
+        "nl": "Afghanistan",
+        "de": "Afghanistan",
+        "fr": "Afghanistan",
+        "es": "Afganistán",
+        "en": "Afghanistan",
+        "pt_BR": "Afeganistão",
+        "sr-Cyrl": "Авганистан",
+        "sr-Latn": "Avganistan",
+        "zh_TW": "阿富汗",
+        "tr": "Afganistan",
+        "ro": "Afganistan",
+        "ar": "أفغانستان",
+        "fa": "افغانستان",
+        "yue": "阿富汗"
       }
     },
     {
@@ -2986,37 +2986,6 @@ class Countries {
         "ar": "جزيرة هيرد وجزر ماكدونالد",
         "fa": "جزیره هرد و جزایر مک‌دونالد",
         "yue": "赫德岛同麦克唐纳群岛"
-      }
-    },
-    {
-      "num_code": "336",
-      "alpha_2_code": "VA",
-      "alpha_3_code": "VAT",
-      "en_short_name": "Vatican City State",
-      "nationality": "Vatican",
-      "dial_code": "+379",
-      "nameTranslations": {
-        "sk": "Vatikán",
-        "se": "Vatikána",
-        "pl": "Watykan",
-        "no": "Vatikanstaten",
-        "ja": "バチカン市国",
-        "it": "Città del Vaticano",
-        "zh": "梵蒂冈",
-        "nl": "Vaticaanstad",
-        "de": "Vatikanstadt",
-        "fr": "État de la Cité du Vatican",
-        "es": "Ciudad del Vaticano",
-        "en": "Vatican City",
-        "pt_BR": "Cidade do Vaticano",
-        "sr-Cyrl": "Ватикан",
-        "sr-Latn": "Vatikan",
-        "zh_TW": "梵蒂岡",
-        "tr": "Vatikan",
-        "ro": "Vatican",
-        "ar": "الفاتيكان",
-        "fa": "واتیکان",
-        "yue": "梵蒂岡城國"
       }
     },
     {
@@ -7359,6 +7328,38 @@ class Countries {
         "yue": "瓦努阿圖"
       }
     },
+    {
+      "num_code": "336",
+      "alpha_2_code": "VA",
+      "alpha_3_code": "VAT",
+      "en_short_name": "Vatican City State",
+      "nationality": "Vatican",
+      "dial_code": "+379",
+      "nameTranslations": {
+        "sk": "Vatikán",
+        "se": "Vatikána",
+        "pl": "Watykan",
+        "no": "Vatikanstaten",
+        "ja": "バチカン市国",
+        "it": "Città del Vaticano",
+        "zh": "梵蒂冈",
+        "nl": "Vaticaanstad",
+        "de": "Vatikanstadt",
+        "fr": "État de la Cité du Vatican",
+        "es": "Ciudad del Vaticano",
+        "en": "Vatican City",
+        "pt_BR": "Cidade do Vaticano",
+        "sr-Cyrl": "Ватикан",
+        "sr-Latn": "Vatikan",
+        "zh_TW": "梵蒂岡",
+        "tr": "Vatikan",
+        "ro": "Vatican",
+        "ar": "الفاتيكان",
+        "fa": "واتیکان",
+        "yue": "梵蒂岡城國"
+      }
+    },
+
     {
       "num_code": "862",
       "alpha_2_code": "VE",
