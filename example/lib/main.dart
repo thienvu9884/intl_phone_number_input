@@ -10,13 +10,13 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Demo',
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       darkTheme: darkTheme,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Scaffold(
           appBar: AppBar(title: Text('Demo')),
           body: MyHomePage(),
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 print(value);
               },
               selectorConfig: SelectorConfig(
-                selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                selectorType: PhoneInputSelectorType.DROPDOWN,
               ),
               ignoreBlank: false,
               autoValidateMode: AutovalidateMode.disabled,

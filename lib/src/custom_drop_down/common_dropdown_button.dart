@@ -15,7 +15,8 @@ class NameAppDropDown<T> extends StatefulWidget {
   final Color? colorBorderSide;
   final bool? enable;
 
-  const NameAppDropDown({Key? key,
+  const NameAppDropDown({
+    Key? key,
     this.backgroundColor,
     this.onClicked,
     this.hideIcon = true,
@@ -48,8 +49,8 @@ class NameAppDropDownState<T> extends State<NameAppDropDown<T>>
   void initState() {
     super.initState();
 
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 200));
     _expandAnimation = CurvedAnimation(
       parent: _animationController!,
       curve: Curves.easeInOut,
@@ -93,9 +94,9 @@ class NameAppDropDownState<T> extends State<NameAppDropDown<T>>
             height: 44,
             child: Row(
               mainAxisAlignment:
-              style.mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
+                  style.mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
               textDirection:
-              widget.leadingIcon ? TextDirection.rtl : TextDirection.ltr,
+                  widget.leadingIcon ? TextDirection.rtl : TextDirection.ltr,
               children: [
                 widget.child!,
                 Padding(
@@ -144,59 +145,62 @@ class NameAppDropDownState<T> extends State<NameAppDropDown<T>>
                 top: topOffset,
                 height: MediaQuery.of(context).size.height * 0.4,
                 width: MediaQuery.of(context).size.width * 0.99,
-                child: CompositedTransformFollower(
-                  offset:
-                  widget.dropdownStyle.offset ?? Offset(0, size.height + 5),
-                  link: _layerLink,
-                  showWhenUnlinked: false,
-                  child: Material(
-                    elevation: widget.dropdownStyle.elevation ?? 0,
-                    borderRadius:
-                    widget.dropdownStyle.borderRadius ?? BorderRadius.zero,
-                    color: widget.dropdownStyle.color,
-                    child: ConstrainedBox(
-                      constraints: widget.dropdownStyle.constraints ??
-                          BoxConstraints(
-                            maxHeight: (MediaQuery.of(context).size.height) -
-                                topOffset -
-                                15,
-                          ),
-                      child: ListView(
-                        padding:
-                        widget.dropdownStyle.padding ?? EdgeInsets.zero,
-                        shrinkWrap: true,
-                        children: widget.items!.asMap().entries.map((item) {
-                          return InkWell(
-                            excludeFromSemantics: true,
-                            borderRadius:
-                            const BorderRadius.all(Radius.circular(8)),
-                            onHover: (hover) {
-                              if (item.value.onHover != null) {
-                                item.value.onHover!(hover);
-                              }
-                            },
-                            onTap: widget.onClicked != null
-                                ? widget.onClicked!(
-                                item.value.value as T, item.key)
-                                : () {
-                              widget.onChange!(
-                                  item.value.value as T, item.key);
-                              _toggleDropdown();
-                                  },
-                            child: Column(
-                              children: [
-                                item.value,
-                                Divider(
-                                  color: Colors.grey,
-                                  thickness: 0.5,
-                                  height: 0.5,
-                                  indent: 8,
-                                  endIndent: 8,
-                                )
-                              ],
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 28),
+                  child: CompositedTransformFollower(
+                    offset: widget.dropdownStyle.offset ??
+                        Offset(0, size.height + 5),
+                    link: _layerLink,
+                    showWhenUnlinked: false,
+                    child: Material(
+                      elevation: widget.dropdownStyle.elevation ?? 0,
+                      borderRadius: widget.dropdownStyle.borderRadius ??
+                          BorderRadius.zero,
+                      color: widget.dropdownStyle.color,
+                      child: ConstrainedBox(
+                        constraints: widget.dropdownStyle.constraints ??
+                            BoxConstraints(
+                              maxHeight: (MediaQuery.of(context).size.height) -
+                                  topOffset -
+                                  15,
                             ),
-                          );
-                        }).toList(),
+                        child: ListView(
+                          padding:
+                              widget.dropdownStyle.padding ?? EdgeInsets.zero,
+                          shrinkWrap: true,
+                          children: widget.items!.asMap().entries.map((item) {
+                            return InkWell(
+                              excludeFromSemantics: true,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                              onHover: (hover) {
+                                if (item.value.onHover != null) {
+                                  item.value.onHover!(hover);
+                                }
+                              },
+                              onTap: widget.onClicked != null
+                                  ? widget.onClicked!(
+                                      item.value.value as T, item.key)
+                                  : () {
+                                      widget.onChange!(
+                                          item.value.value as T, item.key);
+                                      _toggleDropdown();
+                                    },
+                              child: Column(
+                                children: [
+                                  item.value,
+                                  Divider(
+                                    color: Colors.grey,
+                                    thickness: 0.5,
+                                    height: 0.5,
+                                    indent: 8,
+                                    endIndent: 8,
+                                  )
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                   ),
@@ -230,7 +234,8 @@ class SSDropdownItem<T> extends StatelessWidget {
   final Function? onHover;
   final Widget? child;
 
-  const SSDropdownItem({Key? key, this.value, this.onHover, this.child}) : super(key: key);
+  const SSDropdownItem({Key? key, this.value, this.onHover, this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
