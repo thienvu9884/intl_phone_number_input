@@ -220,19 +220,19 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
       // Remove potential duplicates
       countries = countries.toSet().toList();
 
-      countries.sort((a, b) {
-        int result;
-        if (a.dialCode == null) {
-          result = 1;
-        } else if (b.dialCode == null) {
-          result = -1;
-        } else {
-          String a1 = a.dialCode!.replaceAll("+", "");
-          String b1 = b.dialCode!.replaceAll("+", "");
-          result = int.parse(a1).compareTo(int.parse(b1));
-        }
-        return result;
-      });
+      // countries.sort((a, b) {
+      //   int result;
+      //   if (a.dialCode == null) {
+      //     result = 1;
+      //   } else if (b.dialCode == null) {
+      //     result = -1;
+      //   } else {
+      //     String a1 = a.dialCode!.replaceAll("+", "");
+      //     String b1 = b.dialCode!.replaceAll("+", "");
+      //     result = int.parse(a1).compareTo(int.parse(b1));
+      //   }
+      //   return result;
+      // });
 
       final CountryComparator? countryComparator =
           widget.selectorConfig.countryComparator;
