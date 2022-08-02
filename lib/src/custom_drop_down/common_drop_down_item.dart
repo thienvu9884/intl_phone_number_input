@@ -68,13 +68,13 @@ class _CustomDropdownItemState extends State<CustomDropdownItem> {
                                       ? const Color(0xff2F61DB)
                                       : const Color(0xff556998),
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 16)
+                                  fontSize: 14)
                               : TextStyle(
                                   color: isHover
                                       ? widget.colorHover
                                       : widget.colorText,
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 16),
+                                  fontSize: 14),
                     );
                   }),
                 ),
